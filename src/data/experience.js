@@ -1,0 +1,82 @@
+export const experience = [
+  {
+    id: 1,
+    role: 'Full Stack Web Developer',
+    company: 'SPLIT SECOND RESEARCH LIMITED',
+    location: 'London Area, United Kingdom',
+    period: 'August 2018 - Present',
+    duration: '8 years',
+    type: 'Full-time',
+    highlights: [
+      'Developed and maintained an interactive marketing research survey system using Laravel 12, Vue 3, Inertia.js, and Tailwind CSS, enabling efficient data collection and improved consumer behavior analysis.',
+      'Integrated OpenAI for intelligent chatbot functionalities.',
+      'Built responsive and dynamic single-page application features, improving user experience and system performance for internal research tools.',
+      'Maintained and enhanced the company WordPress website, implementing plugins, custom themes, and SEO optimizations to improve functionality, performance, and user engagement.',
+    ],
+  },
+  {
+    id: 2,
+    role: 'Search Engine Marketing Specialist',
+    company: 'Geft Consultancy Services',
+    location: '',
+    period: 'January 2023 - August 2023',
+    duration: '8 months',
+    type: 'Contract',
+    highlights: [],
+  },
+  {
+    id: 3,
+    role: 'Site Acquisition Officer',
+    company: 'LM Telecom',
+    location: 'Cagayan De Oro City, Northern Mindanao, Philippines',
+    period: 'May 2022 - February 2023',
+    duration: '10 months',
+    type: 'Full-time',
+    highlights: [
+      'Managed and maintained geospatial data and GIS mapping systems to support city planning, land management, and local government projects.',
+      'Created and analyzed digital maps and geographic datasets, collaborating with city departments to improve spatial data accuracy for infrastructure and public service planning.',
+    ],
+  },
+  {
+    id: 4,
+    role: 'Geological Information System Specialist',
+    company: 'Malaybalay City Hall',
+    location: 'Malaybalay City, Northern Mindanao, Philippines',
+    period: 'June 2020 - May 2022',
+    duration: '2 years',
+    type: 'Full-time',
+    highlights: [
+      'Managed and maintained geospatial data and GIS mapping systems to support city planning, land management, and local government projects.',
+      'Created and analyzed digital maps and geographic datasets, collaborating with city departments to improve spatial data accuracy for infrastructure and public service planning.',
+    ],
+  },
+  {
+    id: 5,
+    role: 'Admin Aide',
+    company: 'Philippines National Police',
+    location: 'Malaybalay City, Northern Mindanao, Philippines',
+    period: 'June 2019 - May 2020',
+    duration: '1 year',
+    type: 'Full-time',
+    highlights: [
+      'Provided administrative and clerical support, including document preparation, record keeping, and data entry for daily police station operations.',
+      'Organized and maintained official reports, case files, and correspondence, coordinating with officers and staff to ensure accurate documentation and efficient handling of public inquiries.',
+    ],
+  },
+  {
+    id: 6,
+    role: 'Programmer',
+    company: 'NeuroSense',
+    location: 'United Kingdom',
+    period: 'April 2016 - June 2018',
+    duration: '2 years 3 months',
+    type: 'Full-time',
+    highlights: [
+      'Developed and maintained web-based applications and system features, ensuring efficient performance and scalability for company projects.',
+      'Implemented backend and frontend functionalities using modern web technologies, improving system usability and responsiveness.',
+      'Collaborated with the development team to debug, optimize, and enhance software solutions, ensuring reliable and high-quality application performance.',
+    ],
+  },
+]
+
+export default experience

@@ -1,0 +1,106 @@
+@use 'variables' as *;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 640px) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (max-width: 768px) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (max-width: 1024px) { @content; }
+  }
+  @if $breakpoint == xl {
+    @media (max-width: 1280px) { @content; }
+  }
+}
+
+@mixin container {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @include respond(md) {
+    padding: 0 16px;
+  }
+}
+
+@mixin section {
+  padding: 100px 0;
+  position: relative;
+
+  @include respond(md) {
+    padding: 60px 0;
+  }
+}
+
+@mixin section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $color-text-heading;
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $color-gradient-start, $color-gradient-end);
+    border-radius: 2px;
+    margin: 16px auto 0;
+  }
+
+  @include respond(md) {
+    font-size: 2rem;
+  }
+}
+
+@mixin section-subtitle {
+  text-align: center;
+  color: $color-text-muted;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+
+  @include respond(md) {
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+}
+
+@mixin card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: 28px;
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: $color-border-light;
+  }
+}
+
+@mixin glass {
+  background: rgba(30, 30, 48, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $color-border;
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $color-gradient-start, $color-gradient-end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
