@@ -1,4 +1,6 @@
 <script setup>
+import VideoEmbed from './VideoEmbed.vue'
+
 defineProps({
   project: { type: Object, required: true },
 })
@@ -6,7 +8,13 @@ defineProps({
 
 <template>
   <div class="project-card scroll-reveal-scale">
-    <div class="project-card__icon">
+    <VideoEmbed
+      v-if="project.video"
+      :src="project.video"
+      :title="project.title"
+      :poster="project.image"
+    />
+    <div v-else class="project-card__icon">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
       </svg>
