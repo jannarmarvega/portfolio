@@ -91,6 +91,15 @@ export const projects = [
     video: null,
     link: '#',
   },
+  {
+    id: 12,
+    title: 'GIS Map Editor',
+    description: 'Interactive map editor built with Vue 3 and Leaflet.js. Create and edit points, draw polygons, record GPS tracks in real-time with live location tracking, and export all features as GeoJSON. Includes localStorage persistence for all map data.',
+    tags: ['Vue 3', 'Leaflet.js', 'Geolocation', 'GeoJSON', 'localStorage'],
+    image: null,
+    video: null,
+    link: 'https://github.com/jannarmarvega/GIS',
+  },
 ]
 
 export default projects

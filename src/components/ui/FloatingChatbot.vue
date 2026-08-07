@@ -170,8 +170,8 @@ function toggleChat() {
   z-index: 999;
 
   &__bubble {
-    width: 56px;
-    height: 56px;
+      width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: linear-gradient(135deg, $color-primary, $color-gradient-end);
     border: none;
@@ -212,8 +212,8 @@ function toggleChat() {
   }
 
   &__window {
-    width: 420px;
-    max-height: 560px;
+    width: 540px;
+    max-height: 660px;
     background: $color-bg-alt;
     border: 1px solid $color-border;
     border-radius: $radius-lg;
@@ -227,12 +227,12 @@ function toggleChat() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px;
+    padding: 14px 20px;
     border-bottom: 1px solid $color-border;
   }
 
   &__title {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: $color-text-heading;
     @include gradient-text;
@@ -264,7 +264,7 @@ function toggleChat() {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-height: 350px;
+    max-height: 420px;
 
     &::-webkit-scrollbar { width: 4px; }
     &::-webkit-scrollbar-track { background: transparent; }
@@ -311,8 +311,8 @@ function toggleChat() {
   }
 
   &__bubble {
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    padding: 14px 18px;
+    font-size: 0.95rem;
     line-height: 1.6;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -339,7 +339,7 @@ function toggleChat() {
   &__input-area {
     display: flex;
     gap: 10px;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-top: 1px solid $color-border;
     background: $color-bg;
     border-radius: 0 0 $radius-lg $radius-lg;
