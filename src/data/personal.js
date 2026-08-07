@@ -1,12 +1,12 @@
 export const personalInfo = {
   name: 'Jann Niño Armar Vega',
-  title: 'Full Stack Developer',
+  title: 'Full Stack Developer & AI Chatbot Engineer',
   location: 'Malaybalay City, Northern Mindanao, Philippines',
   email: 'jannarmarvega@gmail.com',
   phone: '09525567486',
   website: 'jannvega102.github.io/myportfolio',
   summary: [
-    'Full Stack Developer with over 7 years of hands-on experience delivering robust, maintainable, and scalable software solutions for web, mobile, and geospatial platforms.',
+    'Full Stack Developer & AI Chatbot Engineer with over 7 years of hands-on experience delivering robust, maintainable, and scalable software solutions for web, mobile, and geospatial platforms.',
     'I specialize in end-to-end application development, bridging complex backend architecture with intelligent, modern frontend frameworks.',
     'Dual-stack expert proficient in the VILT Stack (Vue 3, Inertia.js, Laravel, Tailwind) for rapid enterprise development and the MERN Stack (MongoDB, Express, React, Node.js) for high-performance JavaScript environments.',
     'Recently focused on engineering dynamic Survey Builders and intelligent data-collection platforms — supercharging standard forms with GIS mapping (Leaflet.js) and AI-driven automation for predictive analysis, smart data validation, and automated insights.',

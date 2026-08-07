@@ -6,7 +6,7 @@ const typewriterLines = [
   'Full Stack Developer',
   'VILT Stack Expert',
   'MERN Stack Developer',
-  'GIS & AI Specialist',
+  'AI & Chatbot Engineer',
 ]
 </script>
 
