@@ -1,6 +1,7 @@
 <script setup>
 import NavBar from './components/layout/NavBar.vue'
 import Footer from './components/layout/Footer.vue'
+import FloatingChatbot from './components/ui/FloatingChatbot.vue'
 import HeroSection from './components/sections/HeroSection.vue'
 import AboutSection from './components/sections/AboutSection.vue'
 import ProjectsSection from './components/sections/ProjectsSection.vue'
@@ -20,4 +21,5 @@ import ContactSection from './components/sections/ContactSection.vue'
     <ContactSection />
   </main>
   <Footer />
+  <FloatingChatbot />
 </template>
