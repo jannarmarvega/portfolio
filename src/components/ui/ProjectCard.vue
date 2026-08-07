@@ -1,9 +1,11 @@
 <script setup>
 import VideoEmbed from './VideoEmbed.vue'
 
-defineProps({
+const props = defineProps({
   project: { type: Object, required: true },
 })
+
+const emit = defineEmits(['open-demo'])
 </script>
 
 <template>
@@ -24,12 +26,24 @@ defineProps({
     <div class="project-card__tags">
       <span v-for="tag in project.tags" :key="tag" class="project-card__tag">{{ tag }}</span>
     </div>
-    <a v-if="project.link" :href="project.link" class="project-card__link">
-      View Project
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+    <div v-if="project.link || project.demo" class="project-card__actions">
+      <a v-if="project.link" :href="project.link" class="project-card__link">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <button
+        v-if="project.demo"
+        class="project-card__demo-btn"
+        @click="emit('open-demo', project)"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+        Live Demo
+      </button>
+    </div>
   </div>
 </template>
 
@@ -80,18 +94,53 @@ defineProps({
     color: $color-primary-light;
   }
 
+  &__actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid $color-border;
+
+    @include respond(sm) {
+      flex-direction: column;
+    }
+  }
+
   &__link {
     @include flex-center;
     gap: 8px;
-    padding: 10px 0 0;
+    flex: 1;
+    padding: 10px 16px;
     color: $color-primary;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    border-top: 1px solid $color-border;
-    transition: gap $transition-fast;
+    border-radius: $radius-sm;
+    border: 1px solid rgba(108, 99, 255, 0.25);
+    transition: all $transition-fast;
 
-    &:hover { gap: 12px; }
+    &:hover {
+      background: rgba(108, 99, 255, 0.08);
+    }
+  }
+
+  &__demo-btn {
+    @include flex-center;
+    gap: 8px;
+    flex: 1;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, $color-primary, $color-gradient-end);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-glow;
+    }
   }
 }
 </style>

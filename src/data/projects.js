@@ -1,7 +1,42 @@
 // `video` accepts a YouTube link/ID (https://youtu.be/ID, watch?v=ID, /shorts/ID, or the bare ID)
 // or a self-hosted file served from /public (e.g. '/videos/survey-builder.mp4').
 // `image` doubles as the poster frame when a video is set. Leave `video: null` for the icon card.
+// `demo` config: { type: 'chatbot' | 'playground', config: {...} }. Leave as null for no demo.
 export const projects = [
+  {
+    id: 10,
+    title: 'SSR / Impulse',
+    description: 'Real-time survey data collection platform with advanced conditional logic, dynamic question routing, and interactive chart previews. Built for Split Second Research.',
+    tags: ['Laravel', 'Vue 3', 'Inertia.js', 'Tailwind CSS', 'MySQL', 'Chart.js'],
+    image: null,
+    video: null,
+    link: '#',
+    demo: {
+      type: 'playground',
+      config: {
+        defaultHtml: '<div id="survey-preview">\n  <h2>Customer Feedback Survey</h2>\n  <div class="question">\n    <label>How satisfied are you with our service?</label>\n    <div class="star-rating">★★★★☆</div>\n  </div>\n  <button class="btn-primary">Submit</button>\n</div>',
+        defaultCss: '#survey-preview {\n  max-width: 400px;\n  margin: 0 auto;\n  font-family: Inter, system-ui;\n}\nh2 { color: #6c63ff; font-size: 1.4rem; }\n.question { margin: 20px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; }\nlabel { display: block; margin-bottom: 8px; font-weight: 500; color: #333; }\n.star-rating { font-size: 1.5rem; color: #f59e0b; cursor: pointer; user-select: none; }\n.btn-primary { padding: 10px 24px; background: #6c63ff; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }\n.btn-primary:hover { background: #5a52d5; }',
+        defaultJs: 'const stars = document.querySelector(\'.star-rating\');\nif (stars) {\n  stars.addEventListener(\'mouseover\', () => {\n    stars.textContent = \'★★★★★\';\n  });\n  stars.addEventListener(\'mouseout\', () => {\n    stars.textContent = \'★★★★☆\';\n  });\n}\ndocument.querySelector(\'.btn-primary\').addEventListener(\'click\', () => {\n  alert(\'Survey submitted successfully!\');\n});',
+      },
+    },
+  },
+  {
+    id: 11,
+    title: 'SSR / Impact',
+    description: 'AI-integrated research platform featuring intelligent data analysis, automated insight generation, and an interactive chatbot for querying survey results in natural language. Built for Split Second Research.',
+    tags: ['Laravel', 'Vue 3', 'Inertia.js', 'OpenAI', 'Groq LLM', 'Laravel Prism'],
+    image: null,
+    video: null,
+    link: '#',
+    demo: {
+      type: 'chatbot',
+      config: {
+        systemPrompt: 'You are a demo chatbot for the SSR/Impact platform — an AI-integrated research platform by Split Second Research. You help users understand survey analytics, generate insights, and answer questions about market research data analysis. Keep responses concise (2-4 sentences), professional, and highlight the platform\'s AI-powered features.',
+        greeting: 'Welcome to SSR/Impact! I\'m your AI-powered research assistant. I can help you analyze survey responses, generate insights, and answer questions about your research data. Try asking me something!',
+        placeholder: 'Ask about survey insights, data trends, or analysis features...',
+      },
+    },
+  },
   {
     id: 1,
     title: 'Interactive Survey Builder',

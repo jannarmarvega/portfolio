@@ -1,7 +1,19 @@
 <script setup>
+import { ref } from 'vue'
 import { projects } from '../../data/projects.js'
 import ProjectCard from '../ui/ProjectCard.vue'
+import DemoModal from '../ui/DemoModal.vue'
 import ScrollReveal from '../ui/ScrollReveal.vue'
+
+const activeDemo = ref(null)
+
+function openDemo(project) {
+  activeDemo.value = project
+}
+
+function closeDemo() {
+  activeDemo.value = null
+}
 </script>
 
 <template>
@@ -19,10 +31,19 @@ import ScrollReveal from '../ui/ScrollReveal.vue'
             :key="project.id"
             :project="project"
             :style="{ animationDelay: `${i * 0.1}s` }"
+            @open-demo="openDemo"
           />
         </div>
       </div>
     </ScrollReveal>
+
+    <DemoModal
+      v-if="activeDemo?.demo"
+      :title="activeDemo.title + ' — Live Demo'"
+      :demo-type="activeDemo.demo.type"
+      :demo-config="activeDemo.demo.config"
+      @close="closeDemo"
+    />
   </section>
 </template>
 
