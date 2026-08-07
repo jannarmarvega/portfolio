@@ -1,5 +1,5 @@
 <script setup>
-import { ref, nextTick, onMounted } from 'vue'
+import { ref, nextTick } from 'vue'
 import { GROQ_CONFIG } from '../../config/groq.js'
 import buildSystemPrompt from '../../config/chatbot.js'
 
@@ -94,19 +94,8 @@ function toggleChat() {
     <Transition name="slide-up">
       <div v-if="isOpen" class="floating-chat__window">
         <div class="floating-chat__header">
-          <div class="floating-chat__header-left">
-            <div class="floating-chat__avatar">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
-                <path d="M21 21c0-2-1.5-5-4-5H7c-2.5 0-4 3-4 5"/>
-              </svg>
-            </div>
-            <div>
-              <span class="floating-chat__name">Jann's AI Assistant</span>
-              <span class="floating-chat__status">Online</span>
-            </div>
-          </div>
-          <button class="floating-chat__close" @click="toggleChat" aria-label="Close chat">
+          <h3 class="floating-chat__title">Ask Jann's AI</h3>
+          <button class="floating-chat__close" @click="toggleChat" aria-label="Close">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -119,26 +108,15 @@ function toggleChat() {
             :key="i"
             :class="['floating-chat__message', `floating-chat__message--${msg.role}`]"
           >
-            <div
-              v-if="msg.role === 'assistant'"
-              class="floating-chat__avatar floating-chat__avatar--small"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
-                <path d="M21 21c0-2-1.5-5-4-5H7c-2.5 0-4 3-4 5"/>
-              </svg>
-            </div>
+            <span class="floating-chat__role">{{ msg.role === 'assistant' ? 'AI' : 'You' }}</span>
             <div class="floating-chat__bubble">{{ msg.content }}</div>
           </div>
           <div v-if="isLoading" class="floating-chat__message floating-chat__message--assistant">
-            <div class="floating-chat__avatar floating-chat__avatar--small">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
-                <path d="M21 21c0-2-1.5-5-4-5H7c-2.5 0-4 3-4 5"/>
-              </svg>
-            </div>
+            <span class="floating-chat__role">AI</span>
             <div class="floating-chat__bubble floating-chat__typing">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
             </div>
           </div>
         </div>
@@ -146,9 +124,9 @@ function toggleChat() {
         <div class="floating-chat__input-area">
           <textarea
             v-model="input"
-            placeholder="Ask about Jann's work..."
+            placeholder="Ask about Jann's skills, experience, projects..."
             class="floating-chat__input"
-            rows="1"
+            rows="3"
             @keydown="handleKeydown"
             :disabled="isLoading"
           ></textarea>
@@ -158,7 +136,7 @@ function toggleChat() {
             :disabled="isLoading || !input.trim()"
             aria-label="Send"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
@@ -183,6 +161,7 @@ function toggleChat() {
 
 <style lang="scss" scoped>
 @use '../../assets/styles/variables' as *;
+@use '../../assets/styles/mixins' as *;
 
 .floating-chat {
   position: fixed;
@@ -229,75 +208,43 @@ function toggleChat() {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid $color-bg-alt;
+    border: 2px solid $color-bg;
   }
 
   &__window {
-    width: 370px;
-    max-height: 520px;
+    width: 420px;
+    max-height: 560px;
     background: $color-bg-alt;
     border: 1px solid $color-border;
     border-radius: $radius-lg;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    background: linear-gradient(135deg, $color-primary, $color-gradient-end);
+    padding: 14px 18px;
+    border-bottom: 1px solid $color-border;
   }
 
-  &__header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-
-    &--small {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
-      background: $color-bg-card;
-      color: $color-primary;
-      border: 1px solid $color-border;
-    }
-  }
-
-  &__name {
-    display: block;
-    font-size: 0.9rem;
+  &__title {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #fff;
-  }
-
-  &__status {
-    display: block;
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: $color-text-heading;
+    @include gradient-text;
   }
 
   &__close {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
+    border-radius: $radius-sm;
+    background: rgba(255, 255, 255, 0.05);
     border: none;
-    color: #fff;
+    color: $color-text-muted;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -305,7 +252,8 @@ function toggleChat() {
     transition: all $transition-fast;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.1);
+      color: $color-text;
     }
   }
 
@@ -315,8 +263,8 @@ function toggleChat() {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-height: 380px;
+    gap: 16px;
+    max-height: 350px;
 
     &::-webkit-scrollbar { width: 4px; }
     &::-webkit-scrollbar-track { background: transparent; }
@@ -328,11 +276,12 @@ function toggleChat() {
 
   &__message {
     display: flex;
-    gap: 8px;
-    max-width: 90%;
+    flex-direction: column;
+    max-width: 85%;
 
     &--user {
       align-self: flex-end;
+      .floating-chat__role { text-align: right; }
       .floating-chat__bubble {
         background: linear-gradient(135deg, $color-primary, $color-gradient-end);
         color: #fff;
@@ -351,10 +300,20 @@ function toggleChat() {
     }
   }
 
+  &__role {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: $color-text-muted;
+    margin-bottom: 4px;
+    padding: 0 8px;
+  }
+
   &__bubble {
-    padding: 10px 14px;
-    font-size: 0.85rem;
-    line-height: 1.55;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    line-height: 1.6;
     word-wrap: break-word;
     white-space: pre-wrap;
   }
@@ -363,11 +322,11 @@ function toggleChat() {
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 14px 18px;
+    padding: 16px 20px;
 
     .dot {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: $color-text-muted;
       animation: bounce 1.4s infinite ease-in-out both;
@@ -379,23 +338,25 @@ function toggleChat() {
 
   &__input-area {
     display: flex;
-    gap: 8px;
-    padding: 10px 12px;
+    gap: 10px;
+    padding: 12px 16px;
     border-top: 1px solid $color-border;
     background: $color-bg;
+    border-radius: 0 0 $radius-lg $radius-lg;
   }
 
   &__input {
     flex: 1;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: $radius-sm;
     border: 1px solid $color-border;
     background: $color-bg-alt;
     color: $color-text;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-family: $font-sans;
     resize: none;
     outline: none;
+    min-height: 60px;
 
     &:focus { border-color: $color-primary; }
     &::placeholder { color: $color-text-muted; }
@@ -403,8 +364,8 @@ function toggleChat() {
   }
 
   &__send {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border: none;
     border-radius: $radius-sm;
     background: linear-gradient(135deg, $color-primary, $color-gradient-end);
@@ -415,6 +376,7 @@ function toggleChat() {
     justify-content: center;
     transition: all $transition-fast;
     flex-shrink: 0;
+    align-self: flex-end;
 
     &:hover:not(:disabled) { transform: scale(1.05); }
     &:disabled { opacity: 0.4; cursor: not-allowed; }
