@@ -17,6 +17,8 @@ html {
 
 body {
   font-family: $font-sans;
+  background-color: var(--color-base-200, #0f0f1a);
+  color: var(--color-base-content, #e2e8f0);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
