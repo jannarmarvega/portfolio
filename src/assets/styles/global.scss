@@ -55,14 +55,14 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--b2, #1a1a2e);
+  background: var(--color-base-200, #1a1a2e);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--p, #6c63ff);
+  background: var(--color-primary, #6c63ff);
   border-radius: 4px;
 
   &:hover {
-    background: var(--pf, #5b52e8);
+    background: var(--color-primary-content, #5b52e8);
   }
 }
