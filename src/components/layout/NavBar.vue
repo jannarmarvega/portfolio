@@ -5,6 +5,7 @@ import { social } from '../../data/social.js'
 
 const sections = [
   { id: 'hero', label: 'Home' },
+  { id: 'chat', label: 'Chat' },
   { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
