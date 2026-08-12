@@ -98,7 +98,7 @@ export const projects = [
     tags: ['Vue 3', 'Leaflet.js', 'Geolocation', 'GeoJSON', 'localStorage'],
     image: null,
     video: null,
-    link: 'https://github.com/jannarmarvega/GIS',
+    link: 'https://gis-seven-omega.vercel.app/',
   },
 ]
 

@@ -12,6 +12,7 @@ export function buildSystemPrompt() {
     ...personalInfo.skills.ai,
     ...personalInfo.skills.geospatial,
     ...personalInfo.skills.mobile,
+    ...personalInfo.skills.cloud,
     ...personalInfo.skills.infrastructure,
     ...personalInfo.skills.tools,
   ].join(', ')
