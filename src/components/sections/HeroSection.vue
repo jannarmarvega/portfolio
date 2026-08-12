@@ -40,6 +40,10 @@ const typewriterLines = [
       <div class="hero__actions scroll-reveal delay-4">
         <a href="#projects" class="hero__cta-primary">View My Work</a>
         <a href="#contact" class="hero__cta-secondary">Get In Touch</a>
+        <a href="/Jann_Vega_Resume.docx" class="hero__cta-resume" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
       </div>
 
       <div class="hero__socials scroll-reveal delay-5">
@@ -231,6 +235,28 @@ const typewriterLines = [
     &:hover {
       border-color: $color-primary;
       color: $color-primary;
+    }
+
+    @include respond(sm) { width: 100%; text-align: center; }
+  }
+
+  &__cta-resume {
+    padding: 14px 32px;
+    border: 2px dashed $color-border;
+    color: $color-text-muted;
+    border-radius: $radius-full;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all $transition-base;
+    @include flex-center;
+    gap: 8px;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      border-style: solid;
+      background: rgba(108, 99, 255, 0.05);
     }
 
     @include respond(sm) { width: 100%; text-align: center; }
