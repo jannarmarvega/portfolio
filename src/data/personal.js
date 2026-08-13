@@ -4,7 +4,7 @@ export const personalInfo = {
   location: 'Malaybalay City, Northern Mindanao, Philippines',
   email: 'jannarmarvega@gmail.com',
   phone: '09525567486',
-  website: 'jannvega102.github.io/myportfolio',
+  website: 'portfolio-test11-61bc.vercel.app',
   summary: [
     'Solution Architect with over 7 years of hands-on experience designing and delivering robust, maintainable, and scalable software solutions across web, mobile, and geospatial platforms.',
     'I specialize in end-to-end architecture and development — bridging complex backend systems with intelligent, modern frontend frameworks while ensuring seamless cloud deployment and infrastructure.',

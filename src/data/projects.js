@@ -99,6 +99,27 @@ export const projects = [
     image: null,
     video: null,
     link: 'https://gis-seven-omega.vercel.app/',
+    github: 'https://github.com/jannarmarvega/GIS',
+  },
+  {
+    id: 13,
+    title: 'POS Mobile App',
+    description: 'Offline-first point-of-sale mobile app with local SQLite storage, barcode scanning, product and inventory management, a cart with checkout, and order tracking.',
+    tags: ['Ionic', 'Capacitor', 'Vue 3', 'TypeScript', 'SQLite', 'Pinia'],
+    image: null,
+    video: null,
+    link: null,
+    github: 'https://github.com/jannarmarvega/POS_mobile',
+  },
+  {
+    id: 14,
+    title: 'Grading System',
+    description: 'School grading and student records platform with grade entry, attendance tracking, class ranking, and Philippine DepEd report card generation (SF9 / SF10).',
+    tags: ['Django', 'Python', 'SQLite', 'HTML', 'CSS'],
+    image: null,
+    video: null,
+    link: null,
+    github: 'https://github.com/jannarmarvega/grading-system',
   },
 ]
 

@@ -5,7 +5,7 @@ import ScrollReveal from '../ui/ScrollReveal.vue'
 
 const contactLinks = [
   { label: 'Email', value: social.email, href: 'mailto:' + social.email, icon: 'mail' },
-  { label: 'GitHub', value: 'jannvega102', href: social.github, icon: 'github' },
+  { label: 'GitHub', value: 'jannarmarvega', href: social.github, icon: 'github' },
   { label: 'LinkedIn', value: 'Jann Niño Armar Vega', href: social.linkedin, icon: 'linkedin' },
   { label: 'Location', value: 'Malaybalay City, Philippines', href: null, icon: 'map' },
 ]

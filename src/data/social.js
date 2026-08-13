@@ -1,8 +1,8 @@
 export const social = {
-  github: 'https://github.com/jannvega102',
+  github: 'https://github.com/jannarmarvega',
   linkedin: 'https://www.linkedin.com/in/jann-ni%C3%B1o-armar-vega-741572268',
   email: 'jannarmarvega@gmail.com',
-  website: 'https://jannvega102.github.io/myportfolio',
+  website: 'https://portfolio-test11-61bc.vercel.app',
 }
 
 export const education = {
