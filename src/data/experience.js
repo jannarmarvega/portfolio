@@ -4,8 +4,8 @@ export const experience = [
     role: 'Full Stack Web Developer',
     company: 'SPLIT SECOND RESEARCH LIMITED',
     location: 'London Area, United Kingdom',
-    period: 'August 2018 - Present',
-    duration: '8 years',
+    period: 'August 2023 - Present',
+    duration: '3 years',
     type: 'Full-time',
     highlights: [
       'Developed and maintained an interactive marketing research survey system using Laravel 12, Vue 3, Inertia.js, and Tailwind CSS, enabling efficient data collection and improved consumer behavior analysis.',
