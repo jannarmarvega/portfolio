@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-reveal-wrap">
+  <div ref="el" class="scroll-reveal-wrap">
     <slot />
   </div>
 </template>
@@ -10,23 +10,32 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const el = ref(null)
 let observer = null
 
+// Each animated element is observed on its own. Observing the whole section with a
+// 10% threshold never fired on phones: a long stacked section (e.g. Projects) is
+// taller than ten screens, so 10% of it can never be visible at once.
 onMounted(() => {
+  const children = el.value.querySelectorAll(
+    '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
+  )
+
+  if (!('IntersectionObserver' in window)) {
+    children.forEach((child) => child.classList.add('revealed'))
+    return
+  }
+
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const children = entry.target.querySelectorAll(
-            '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
-          )
-          children.forEach((child) => child.classList.add('revealed'))
+          entry.target.classList.add('revealed')
+          observer.unobserve(entry.target)
         }
       })
     },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    { threshold: 0, rootMargin: '0px 0px -40px 0px' }
   )
 
-  const targets = document.querySelectorAll('.scroll-reveal-wrap')
-  targets.forEach((t) => observer.observe(t))
+  children.forEach((child) => observer.observe(child))
 })
 
 onUnmounted(() => {

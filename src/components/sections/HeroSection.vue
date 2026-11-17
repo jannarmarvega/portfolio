@@ -1,6 +1,17 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import { personalInfo } from '../../data/personal.js'
 import SocialLinks from '../ui/SocialLinks.vue'
+
+// The hero is above the fold, so play its entrance animation as soon as it mounts.
+const heroEl = ref(null)
+onMounted(() => {
+  requestAnimationFrame(() => {
+    heroEl.value
+      ?.querySelectorAll('.scroll-reveal')
+      .forEach((child) => child.classList.add('revealed'))
+  })
+})
 
 const typewriterLines = [
   'Full Stack Developer',
@@ -11,7 +22,7 @@ const typewriterLines = [
 </script>
 
 <template>
-  <section id="hero" class="hero">
+  <section id="hero" ref="heroEl" class="hero">
     <div class="hero__bg-orb hero__bg-orb--1"></div>
     <div class="hero__bg-orb hero__bg-orb--2"></div>
     <div class="hero__bg-orb hero__bg-orb--3"></div>

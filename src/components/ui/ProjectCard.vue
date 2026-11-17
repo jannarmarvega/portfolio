@@ -16,6 +16,36 @@ const emit = defineEmits(['open-demo'])
       :title="project.title"
       :poster="project.image"
     />
+    <!-- Phone screenshot / screen recording, alone or overlapping a desktop shot -->
+    <div
+      v-else-if="project.mobile"
+      class="project-card__media"
+      :class="{ 'project-card__media--combo': project.image }"
+    >
+      <a
+        v-if="project.image"
+        :href="project.link || project.github || undefined"
+        target="_blank"
+        rel="noopener"
+        class="project-card__shot"
+      >
+        <img :src="project.image" :alt="`${project.title} web screenshot`" loading="lazy" />
+      </a>
+      <div class="phone">
+        <div class="phone__screen">
+          <video
+            v-if="project.mobile.video"
+            :src="project.mobile.video"
+            :poster="project.mobile.image"
+            controls
+            muted
+            playsinline
+            preload="none"
+          />
+          <img v-else :src="project.mobile.image" :alt="`${project.title} mobile screenshot`" loading="lazy" />
+        </div>
+      </div>
+    </div>
     <a
       v-else-if="project.image"
       :href="project.link || project.github || undefined"
@@ -98,6 +128,65 @@ const emit = defineEmits(['open-demo'])
 
     &:hover img {
       transform: scale(1.04);
+    }
+  }
+
+  &__media {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    border-radius: $radius-md;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.14), rgba(59, 130, 246, 0.08));
+
+    .phone {
+      width: 46%;
+      max-width: 190px;
+    }
+
+    // Desktop shot with the phone overlapping its bottom-right corner
+    &--combo {
+      display: block;
+      padding: 0 0 28px;
+      background: none;
+
+      .project-card__shot {
+        width: 88%;
+      }
+
+      .phone {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 30%;
+        max-width: 130px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  .phone {
+    aspect-ratio: 9 / 19.5;
+    padding: 6px;
+    border-radius: 22px;
+    background: #0b0b12;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    &__screen {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+
+      img,
+      video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
     }
   }
 
