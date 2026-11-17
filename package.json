@@ -20,6 +20,7 @@
     "codemirror": "^6.0.2",
     "daisyui": "^5.7.16",
     "docx": "^9.7.1",
+    "nodemailer": "^6.9.16",
     "vue": "^3.5.40"
   },
   "devDependencies": {
