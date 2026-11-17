@@ -5,15 +5,16 @@ import ScrollReveal from '../ui/ScrollReveal.vue'
 import { education, certifications } from '../../data/social.js'
 
 const skillCategories = [
+  { name: 'Languages', items: personalInfo.skills.languages },
   { name: 'Stacks', items: personalInfo.skills.stacks },
   { name: 'Frontend', items: personalInfo.skills.frontend },
   { name: 'Backend', items: personalInfo.skills.backend },
+  { name: 'Databases', items: personalInfo.skills.databases },
   { name: 'AI & Automation', items: personalInfo.skills.ai },
   { name: 'Geospatial', items: personalInfo.skills.geospatial },
   { name: 'Mobile', items: personalInfo.skills.mobile },
-  { name: 'Cloud', items: personalInfo.skills.cloud },
-  { name: 'Infrastructure', items: personalInfo.skills.infrastructure },
-  { name: 'Tools', items: personalInfo.skills.tools },
+  { name: 'Cloud & DevOps', items: personalInfo.skills.cloud },
+  { name: 'Tools & Libraries', items: personalInfo.skills.tools },
 ]
 </script>
 
@@ -23,7 +24,7 @@ const skillCategories = [
       <div class="about__container">
         <h2 class="about__title scroll-reveal">About Me</h2>
         <p class="about__subtitle scroll-reveal delay-1">
-          A passionate solution architect bridging complex backend architecture with modern frontend frameworks
+          A passionate full stack developer bridging complex backend architecture with modern frontend frameworks
         </p>
 
         <div class="about__content">

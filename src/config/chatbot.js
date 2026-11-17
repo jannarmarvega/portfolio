@@ -6,14 +6,15 @@ const currentEmployer = experience[0]
 
 export function buildSystemPrompt() {
   const skillsList = [
+    ...personalInfo.skills.languages,
     ...personalInfo.skills.stacks,
     ...personalInfo.skills.frontend,
     ...personalInfo.skills.backend,
+    ...personalInfo.skills.databases,
     ...personalInfo.skills.ai,
     ...personalInfo.skills.geospatial,
     ...personalInfo.skills.mobile,
     ...personalInfo.skills.cloud,
-    ...personalInfo.skills.infrastructure,
     ...personalInfo.skills.tools,
   ].join(', ')
 

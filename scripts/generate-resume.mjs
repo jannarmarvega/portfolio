@@ -13,15 +13,16 @@ const ACCENT = '6c63ff'
 
 // Same category labels the About section uses.
 const skillCategories = [
+  { name: 'Languages', items: personalInfo.skills.languages },
   { name: 'Stacks', items: personalInfo.skills.stacks },
   { name: 'Frontend', items: personalInfo.skills.frontend },
   { name: 'Backend', items: personalInfo.skills.backend },
+  { name: 'Databases', items: personalInfo.skills.databases },
   { name: 'AI & Automation', items: personalInfo.skills.ai },
   { name: 'Geospatial', items: personalInfo.skills.geospatial },
   { name: 'Mobile', items: personalInfo.skills.mobile },
-  { name: 'Cloud', items: personalInfo.skills.cloud },
-  { name: 'Infrastructure', items: personalInfo.skills.infrastructure },
-  { name: 'Tools', items: personalInfo.skills.tools },
+  { name: 'Cloud & DevOps', items: personalInfo.skills.cloud },
+  { name: 'Tools & Libraries', items: personalInfo.skills.tools },
 ]
 
 function sectionHeading(text) {

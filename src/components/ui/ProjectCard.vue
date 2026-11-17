@@ -16,6 +16,15 @@ const emit = defineEmits(['open-demo'])
       :title="project.title"
       :poster="project.image"
     />
+    <a
+      v-else-if="project.image"
+      :href="project.link || project.github || undefined"
+      target="_blank"
+      rel="noopener"
+      class="project-card__shot"
+    >
+      <img :src="project.image" :alt="`${project.title} screenshot`" loading="lazy" />
+    </a>
     <div v-else class="project-card__icon">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
@@ -27,8 +36,8 @@ const emit = defineEmits(['open-demo'])
       <span v-for="tag in project.tags" :key="tag" class="project-card__tag">{{ tag }}</span>
     </div>
     <div v-if="project.link || project.github || project.demo" class="project-card__actions">
-      <a v-if="project.link" :href="project.link" class="project-card__link">
-        View Project
+      <a v-if="project.link" :href="project.link" target="_blank" rel="noopener" class="project-card__link">
+        Live Site
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
@@ -70,6 +79,26 @@ const emit = defineEmits(['open-demo'])
     border-radius: $radius-md;
     background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(59, 130, 246, 0.15));
     color: $color-primary;
+  }
+
+  &__shot {
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: $radius-md;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.04);
+    }
   }
 
   &__title {

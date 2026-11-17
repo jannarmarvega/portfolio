@@ -3,7 +3,7 @@ import { personalInfo } from '../../data/personal.js'
 import SocialLinks from '../ui/SocialLinks.vue'
 
 const typewriterLines = [
-  'Solution Architect',
+  'Full Stack Developer',
   'VILT Stack Expert',
   'MERN Stack Developer',
   'AI & Chatbot Engineer',
